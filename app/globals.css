@@ -1,0 +1,824 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 0 0% 20%; /* #333333 */
+
+    /* Card colors */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 0 0% 20%; /* #333333 */
+
+    /* Popover colors */
+    --popover: 0 0% 100%; /* #FFFFFF */
+    --popover-foreground: 0 0% 20%; /* #333333 */
+
+    /* Primary - Blue */
+    --primary: 212 100% 40%; /* #0052CC */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Secondary - Teal */
+    --secondary: 171 100% 38%; /* #00C2A8 */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Accent - Orange */
+    --accent: 14 100% 60%; /* #FF6B35 */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Success - Teal */
+    --success: 171 100% 38%; /* #00C2A8 */
+    --success-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Warning - Orange */
+    --warning: 14 100% 60%; /* #FF6B35 */
+    --warning-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Destructive - Red */
+    --destructive: 0 84% 60%; /* #F04747 */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+
+    /* Muted colors */
+    --muted: 210 20% 96%; /* #F5F7FA */
+    --muted-foreground: 215 16% 47%; /* #64748B */
+
+    /* Border & input colors */
+    --border: 220 13% 91%; /* #E1E4E8 */
+    --input: 220 13% 91%; /* #E1E4E8 */
+    --ring: 212 100% 40%; /* #0052CC */
+
+    /* Radius */
+    --radius: 0.5rem;
+
+    /* Application process colors */
+    --job-details: 212 100% 40%; /* #0052CC - Primary Blue */
+    --resume-analysis: 171 100% 38%; /* #00C2A8 - Accent Teal */
+    --optimization: 14 100% 60%; /* #FF6B35 - CTA Orange */
+    --cover-letter: 212 100% 40%; /* #0052CC - Primary Blue */
+    --download: 171 100% 38%; /* #00C2A8 - Accent Teal */
+
+    /* Score colors */
+    --score-excellent: 171 100% 38%; /* #00C2A8 - Accent Teal */
+    --score-good: 171 100% 38%; /* #00C2A8 - Accent Teal (lighter) */
+    --score-poor: 14 100% 60%; /* #FF6B35 - CTA Orange */
+    --score-bad: 0 84% 60%; /* #F04747 - Destructive Red */
+
+    /* Chart colors */
+    --chart-1: 212 100% 40%; /* #0052CC */
+    --chart-2: 171 100% 38%; /* #00C2A8 */
+    --chart-3: 14 100% 60%; /* #FF6B35 */
+    --chart-4: 262 83% 58%; /* Purple */
+    --chart-5: 142 76% 36%; /* Green */
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 212 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 171 100% 45%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 14 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --success: 171 100% 45%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 14 100% 65%;
+    --warning-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 212 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes input-focus {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 82, 204, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 82, 204, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 82, 204, 0);
+  }
+}
+
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 82, 204, 0.4);
+  }
+  70% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(0, 82, 204, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 82, 204, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes bounce-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes bounce-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Custom Utility Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.animate-input-focus {
+  animation: input-focus 2s ease-out;
+}
+
+.animate-button-pulse {
+  animation: button-pulse 2s infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-bounce-horizontal {
+  animation: bounce-horizontal 1s ease-in-out infinite;
+}
+
+.animate-bounce-vertical {
+  animation: bounce-vertical 1s ease-in-out infinite;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-dark {
+  background: rgba(17, 25, 40, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient Backgrounds */
+.bg-primary-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+.bg-secondary-gradient {
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+.bg-accent-gradient {
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+/* Process Step Gradients */
+.bg-job-details-gradient {
+  background: linear-gradient(135deg, hsl(var(--job-details)) 0%, hsl(var(--job-details) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+.bg-resume-analysis-gradient {
+  background: linear-gradient(135deg, hsl(var(--resume-analysis)) 0%, hsl(var(--resume-analysis) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+.bg-optimization-gradient {
+  background: linear-gradient(135deg, hsl(var(--optimization)) 0%, hsl(var(--optimization) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+.bg-cover-letter-gradient {
+  background: linear-gradient(135deg, hsl(var(--cover-letter)) 0%, hsl(var(--cover-letter) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+.bg-download-gradient {
+  background: linear-gradient(135deg, hsl(var(--download)) 0%, hsl(var(--download) / 0.8) 100%);
+  color: hsl(0 0% 100%);
+}
+
+/* Score Gradient Backgrounds */
+.bg-score-excellent-gradient {
+  background: linear-gradient(90deg, hsl(var(--score-excellent)) 0%, hsl(var(--score-excellent) / 0.8) 100%);
+}
+
+.bg-score-good-gradient {
+  background: linear-gradient(90deg, hsl(var(--score-good)) 0%, hsl(var(--score-good) / 0.8) 100%);
+}
+
+.bg-score-poor-gradient {
+  background: linear-gradient(90deg, hsl(var(--score-poor)) 0%, hsl(var(--score-poor) / 0.8) 100%);
+}
+
+.bg-score-bad-gradient {
+  background: linear-gradient(90deg, hsl(var(--score-bad)) 0%, hsl(var(--score-bad) / 0.8) 100%);
+}
+
+/* Text Gradients */
+.text-primary-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-secondary-gradient {
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary) / 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-accent-gradient {
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent) / 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Score Text Colors */
+.text-score-excellent {
+  color: hsl(var(--score-excellent));
+}
+
+.text-score-good {
+  color: hsl(var(--score-good));
+}
+
+.text-score-poor {
+  color: hsl(var(--score-poor));
+}
+
+.text-score-bad {
+  color: hsl(var(--score-bad));
+}
+
+/* Custom Shadows */
+.shadow-soft {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+}
+
+.shadow-card {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-button {
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.25);
+}
+
+/* Custom Border Styles */
+.border-gradient {
+  position: relative;
+  border-radius: var(--radius);
+  background-clip: padding-box;
+}
+
+.border-gradient::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  z-index: -1;
+  border-radius: calc(var(--radius) + 1px);
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+}
+
+/* Progress Bar Styles */
+.progress-bar-primary {
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+}
+
+.progress-bar-secondary {
+  background: linear-gradient(90deg, hsl(var(--secondary)) 0%, hsl(var(--secondary) / 0.8) 100%);
+}
+
+.progress-bar-accent {
+  background: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--accent) / 0.8) 100%);
+}
+
+/* Score Progress Bar Styles */
+.progress-bar-score-excellent {
+  background: linear-gradient(90deg, hsl(var(--score-excellent)) 0%, hsl(var(--score-excellent) / 0.8) 100%);
+}
+
+.progress-bar-score-good {
+  background: linear-gradient(90deg, hsl(var(--score-good)) 0%, hsl(var(--score-good) / 0.8) 100%);
+}
+
+.progress-bar-score-poor {
+  background: linear-gradient(90deg, hsl(var(--score-poor)) 0%, hsl(var(--score-poor) / 0.8) 100%);
+}
+
+.progress-bar-score-bad {
+  background: linear-gradient(90deg, hsl(var(--score-bad)) 0%, hsl(var(--score-bad) / 0.8) 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
+
+/* Custom Focus Styles */
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+.focus-ring-pulse {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  transition: all 0.3s ease;
+}
+
+.focus-ring-pulse:focus-visible {
+  animation: input-focus 1s ease-out;
+}
+
+/* Semantic Background Colors */
+.bg-primary-light {
+  background-color: hsl(var(--primary) / 0.1);
+}
+
+.bg-secondary-light {
+  background-color: hsl(var(--secondary) / 0.1);
+}
+
+.bg-accent-light {
+  background-color: hsl(var(--accent) / 0.1);
+}
+
+/* Process Step Background Colors */
+.bg-job-details-light {
+  background-color: hsl(var(--job-details) / 0.1);
+}
+
+.bg-resume-analysis-light {
+  background-color: hsl(var(--resume-analysis) / 0.1);
+}
+
+.bg-optimization-light {
+  background-color: hsl(var(--optimization) / 0.1);
+}
+
+.bg-cover-letter-light {
+  background-color: hsl(var(--cover-letter) / 0.1);
+}
+
+.bg-download-light {
+  background-color: hsl(var(--download) / 0.1);
+}
+
+/* Semantic Text Colors */
+.text-primary-color {
+  color: hsl(var(--primary));
+}
+
+.text-secondary-color {
+  color: hsl(var(--secondary));
+}
+
+.text-accent-color {
+  color: hsl(var(--accent));
+}
+
+/* Process Step Text Colors */
+.text-job-details {
+  color: hsl(var(--job-details));
+}
+
+.text-resume-analysis {
+  color: hsl(var(--resume-analysis));
+}
+
+.text-optimization {
+  color: hsl(var(--optimization));
+}
+
+.text-cover-letter {
+  color: hsl(var(--cover-letter));
+}
+
+.text-download {
+  color: hsl(var(--download));
+}
+
+/* Semantic Border Colors */
+.border-primary-color {
+  border-color: hsl(var(--primary) / 0.2);
+}
+
+.border-secondary-color {
+  border-color: hsl(var(--secondary) / 0.2);
+}
+
+.border-accent-color {
+  border-color: hsl(var(--accent) / 0.2);
+}
+
+/* Process Step Border Colors */
+.border-job-details {
+  border-color: hsl(var(--job-details) / 0.2);
+}
+
+.border-resume-analysis {
+  border-color: hsl(var(--resume-analysis) / 0.2);
+}
+
+.border-optimization {
+  border-color: hsl(var(--optimization) / 0.2);
+}
+
+.border-cover-letter {
+  border-color: hsl(var(--cover-letter) / 0.2);
+}
+
+.border-download {
+  border-color: hsl(var(--download) / 0.2);
+}
+
+/* Suggestion Type Backgrounds */
+.bg-suggestion-critical-light {
+  background-color: hsl(var(--destructive) / 0.1);
+}
+
+.bg-suggestion-important-light {
+  background-color: hsl(var(--warning) / 0.1);
+}
+
+.bg-suggestion-helpful-light {
+  background-color: hsl(var(--secondary) / 0.1);
+}
+
+/* Suggestion Type Text */
+.text-suggestion-critical {
+  color: hsl(var(--destructive));
+}
+
+.text-suggestion-important {
+  color: hsl(var(--warning));
+}
+
+.text-suggestion-helpful {
+  color: hsl(var(--secondary));
+}
+
+/* Strength Indicator Backgrounds */
+.bg-strength-major-light {
+  background-color: hsl(var(--success) / 0.1);
+}
+
+.bg-strength-minor-light {
+  background-color: hsl(var(--secondary) / 0.1);
+}
+
+/* Strength Indicator Text */
+.text-strength-major {
+  color: hsl(var(--success));
+}
+
+.text-strength-minor {
+  color: hsl(var(--secondary));
+}
+
+/* Keyword Match Backgrounds */
+.bg-keyword-match-light {
+  background-color: hsl(var(--secondary) / 0.1);
+}
+
+.bg-keyword-missing-light {
+  background-color: hsl(var(--warning) / 0.1);
+}
+
+/* Keyword Match Text */
+.text-keyword-match {
+  color: hsl(var(--secondary));
+}
+
+.text-keyword-missing {
+  color: hsl(var(--warning));
+}
+
+/* High-contrast utility classes */
+.high-contrast-text {
+  color: hsl(0 0% 20%);
+}
+
+.high-contrast-bg {
+  background-color: hsl(0 0% 100%);
+}
+
+/* Improve contrast for text on colored backgrounds */
+.text-on-color {
+  color: hsl(0 0% 100%);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* High contrast utility classes */
+.high-contrast-text {
+  @apply text-foreground font-medium;
+}
+
+.tab-text-active {
+  @apply text-white font-medium;
+}
+
+.tab-text-inactive {
+  @apply text-foreground/90 font-medium;
+}
+
+.tab-number {
+  @apply bg-white/80 text-primary font-bold shadow-sm;
+}
+
+/* Improve contrast for disabled states */
+.disabled-text {
+  @apply opacity-60 font-medium;
+}
+
+/* Improve contrast for tab indicators */
+.tab-indicator {
+  @apply bg-foreground/20;
+}
+
+.tab-indicator-active {
+  @apply bg-foreground;
+}
+
+/* High contrast utility classes for tabs and form elements */
+.high-contrast-tab {
+  @apply font-semibold text-foreground border border-border/80 shadow-sm;
+}
+
+.high-contrast-tab-active {
+  @apply font-bold text-white shadow-md;
+}
+
+.high-contrast-tab-number {
+  @apply bg-white text-primary font-bold border border-primary/30 shadow-md;
+}
+
+.high-contrast-label {
+  @apply text-foreground font-semibold;
+}
+
+.high-contrast-text {
+  @apply text-foreground font-medium;
+}
+
+.high-contrast-placeholder {
+  @apply bg-muted border border-border shadow-sm text-foreground font-semibold;
+}
+
+.input-animated {
+  transition: all 0.3s ease;
+}
+
+.input-animated:focus {
+  transform: scale(1.01);
+}
+
+.button-animated {
+  transition: all 0.3s ease;
+}
+
+.button-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 82, 204, 0.25);
+}
+
+.button-animated:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 82, 204, 0.25);
+}
+
